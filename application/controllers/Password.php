@@ -12,7 +12,7 @@ class Password extends CI_Controller
 	public function index() //untuk tampilkan seluruh data dari database
 	{
 
-		$data['user']   = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		$data['user']   = $this->db->get_where('tbl_user', ['username' => $this->session->userdata('username')])->row_array();
 
 		$data['title'] = 'Password';
 
@@ -45,7 +45,7 @@ class Password extends CI_Controller
 
 					$this->db->set('password', $password_hash);
 					$this->db->where('username', $this->session->userdata('username'));
-					$this->db->update('user');
+					$this->db->update('tbl_user');
 
 					$this->session->set_flashdata('edit', 'Ubah');
 					redirect('password');

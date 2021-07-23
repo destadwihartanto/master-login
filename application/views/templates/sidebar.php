@@ -161,9 +161,9 @@
 							<?php
 							$role_id = $this->session->userdata('role_id');
 							$this->db->select('*');
-							$this->db->from('user_role');
-							$this->db->join('user_access_menu', 'user_access_menu.role_id = user_role.id');
-							$this->db->join('user_menu', 'user_menu.id = user_access_menu.menu_id');
+							$this->db->from('tbl_user_role');
+							$this->db->join('tbl_user_access_menu', 'tbl_user_access_menu.role_id = tbl_user_role.id');
+							$this->db->join('tbl_user_menu', 'tbl_user_menu.id = tbl_user_access_menu.menu_id');
 							$this->db->where('role_id', $role_id);
 							$this->db->where('is_active', '1');
 							$this->db->where('is_main_menu', '0');
@@ -173,9 +173,9 @@
 							<?php foreach ($query as $menu) : ?>
 								<?php
 								$this->db->select('*');
-								$this->db->from('user_role');
-								$this->db->join('user_access_menu', 'user_access_menu.role_id = user_role.id');
-								$this->db->join('user_menu', 'user_menu.id = user_access_menu.menu_id');
+								$this->db->from('tbl_user_role');
+								$this->db->join('tbl_user_access_menu', 'tbl_user_access_menu.role_id = tbl_user_role.id');
+								$this->db->join('tbl_user_menu', 'tbl_user_menu.id = tbl_user_access_menu.menu_id');
 								$this->db->where('role_id', $role_id);
 								$this->db->where('is_active', '1');
 								$this->db->where('is_main_menu', $menu->id);

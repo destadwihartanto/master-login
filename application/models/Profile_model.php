@@ -6,9 +6,9 @@ class Profile_model extends CI_Model
 
 	public function users()
 	{
-		$this->db->join('user_role', 'user_role.id=user.role_id', 'LEFT');
+		$this->db->join('tbl_user_role', 'tbl_user_role.id=tbl_user.role_id', 'LEFT');
 
-		return $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		return $this->db->get_where('tbl_user', ['username' => $this->session->userdata('username')])->row_array();
 	}
 
 	public function EditData()
@@ -39,6 +39,6 @@ class Profile_model extends CI_Model
 		$this->db->set('name', $name);
 		$this->db->set('email', $email);
 		$this->db->where('id_user', $id_user);
-		$this->db->update('user');
+		$this->db->update('tbl_user');
 	}
 }

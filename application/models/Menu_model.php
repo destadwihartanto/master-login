@@ -7,12 +7,12 @@ class Menu_model extends CI_Model
 	public function users()
 	{
 
-		return $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		return $this->db->get_where('tbl_user', ['username' => $this->session->userdata('username')])->row_array();
 	}
 
 	public function getAllMenu()
 	{
-		return $query = $this->db->get('user_menu')->result_array();
+		return $query = $this->db->get('tbl_user_menu')->result_array();
 	}
 
 	public function AddData()
@@ -26,7 +26,7 @@ class Menu_model extends CI_Model
 			"is_active"     => $this->input->post('is_active', true),
 		];
 
-		$this->db->insert('user_menu', $data);
+		$this->db->insert('tbl_user_menu', $data);
 	}
 
 
@@ -41,18 +41,18 @@ class Menu_model extends CI_Model
 		];
 
 		$this->db->where('id', $this->input->post('id'));
-		$this->db->update('user_menu', $data);
+		$this->db->update('tbl_user_menu', $data);
 	}
 
 	public function getById($id) // memanggil semua data didatabase untuk ditampilkan 
 	{
 
-		return $this->db->get_where('user_menu', ['id' => $id])->row();
+		return $this->db->get_where('tbl_user_menu', ['id' => $id])->row();
 	}
 
 
 	public function DeleteData($id)
 	{
-		$this->db->delete('user_menu', ['id' => $id]);
+		$this->db->delete('tbl_user_menu', ['id' => $id]);
 	}
 }

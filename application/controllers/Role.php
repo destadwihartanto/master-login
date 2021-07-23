@@ -49,7 +49,7 @@ class Role extends CI_Controller
 	public function roleAccess($role_id)
 	{
 		$data['title'] = 'Role Accesss';
-		$data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		$data['user'] = $this->db->get_where('tbl_user', ['username' => $this->session->userdata('username')])->row_array();
 
 		$data['role'] = $this->Role_model->getRoleAccess($role_id);
 		$data['menu'] = $this->Menu_model->getAllMenu();
@@ -71,12 +71,12 @@ class Role extends CI_Controller
 			'menu_id' => $menu_id
 		];
 
-		$result = $this->db->get_where('user_access_menu', $data);
+		$result = $this->db->get_where('tbl_user_access_menu', $data);
 
 		if ($result->num_rows() < 1) {
-			$this->db->insert('user_access_menu', $data);
+			$this->db->insert('tbl_user_access_menu', $data);
 		} else {
-			$this->db->delete('user_access_menu', $data);
+			$this->db->delete('tbl_user_access_menu', $data);
 		}
 
 		$this->session->set_flashdata('change', 'Access Change!');

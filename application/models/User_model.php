@@ -6,14 +6,14 @@ class User_model extends CI_Model
 
 	public function users()
 	{
-		return $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		return $this->db->get_where('tbl_user', ['username' => $this->session->userdata('username')])->row_array();
 	}
 
 	public function getAll()
 	{
 
-		$this->db->from('user');
-		$this->db->join('user_role', 'user_role.id=user.role_id', 'LEFT');
+		$this->db->from('tbl_user');
+		$this->db->join('tbl_user_role', 'tbl_user_role.id=tbl_user.role_id', 'LEFT');
 		return $this->db->get()->result_array();
 	}
 
@@ -32,7 +32,7 @@ class User_model extends CI_Model
 
 		];
 
-		$this->db->insert('user', $data);
+		$this->db->insert('tbl_user', $data);
 	}
 
 
@@ -51,18 +51,18 @@ class User_model extends CI_Model
 
 
 		$this->db->where('id_user', $this->input->post('id_user'));
-		$this->db->update('user', $data);
+		$this->db->update('tbl_user', $data);
 	}
 
 	public function getById($id) // memanggil semua data didatabase untuk ditampilkan 
 	{
 
-		return $this->db->get_where('user', ['id_user' => $id])->row();
+		return $this->db->get_where('tbl_user', ['id_user' => $id])->row();
 	}
 
 
 	public function DeleteData($id)
 	{
-		$this->db->delete('user', ['id_user' => $id]);
+		$this->db->delete('tbl_user', ['id_user' => $id]);
 	}
 }

@@ -39,7 +39,7 @@ class Auth extends CI_Controller
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 
-		$user = $this->db->get_where('user', ['username' => $username])->row_array();
+		$user = $this->db->get_where('tbl_user', ['username' => $username])->row_array();
 		//user available
 		if ($user) {
 			// if user active
